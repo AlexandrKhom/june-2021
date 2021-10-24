@@ -10,6 +10,24 @@ fs.readFile(`${__dirname}/files/test.txt`, ((err, data)=> {
     console.log(err)
     return
   }
-  console.log(data)
+  console.log(data.toString())
 }))
+
+// fs.writeFile(`${__dirname}/files/test.txt`, 'hello', (err)=> {
+//   if (err){
+//     console.log(err)}
+// })
+
+fs.appendFile(`${__dirname}/files/test.txt`, 'hello', (err)=> {
+  if (err){
+    console.log(err)}
+})
+
+console.log(__dirname);
+console.log(__filename);
+
+
+
+
+
 
