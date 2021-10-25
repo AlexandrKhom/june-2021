@@ -1,6 +1,15 @@
+const db = require('../dataBase/users')
+
+
 module.exports = {
   getUser: (req, res) => {
-    res.json('Get All Users')
+    res.json(db)
+  },
+
+  getUserById: (req, res) => {
+    const {user_id} = req.params
+    const user = db[user_id - 1]
+    res.json({user})
   },
 
   createUser: (req, res) => {
