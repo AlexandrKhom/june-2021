@@ -7,7 +7,7 @@ router.get('/:user_id', userController.getUserById);
 
 router.post('/', userController.createUser);
 
-router.put('/', userController.updateYser);
+router.put('/', userController.updateUser);
 
 module.exports = router;
 

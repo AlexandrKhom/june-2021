@@ -13,10 +13,12 @@ module.exports = {
   },
 
   createUser: (req, res) => {
+    console.log(req.body)
+    db.push({...req.body, id: db.length + 1})
     res.json('Create New User')
   },
 
-  updateYser: (req, res) => {
+  updateUser: (req, res) => {
     res.json('Update User')
   }
 }
