@@ -2,17 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.get('/users', (req, res)=> {
-  res.json('hello world get user')
-})
+const userRouter = require('./routes/user.router')
 
-app.post('/users', (req, res)=> {
-  res.json('hello world post user')
-})
-
-app.put('/users', (req, res)=> {
-  res.json('hello world update user')
-})
+app.use('/users', userRouter)
 
 app.listen(5000, ()=> {
   console.log('App listen 5000')
