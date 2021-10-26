@@ -15,6 +15,7 @@ module.exports = {
   getUserById: async (req, res) => {
     try {
       const {user_id} = req.params
+      console.log(user_id)
       const user = await User.findById(user_id)
       res.json({user})
     }
