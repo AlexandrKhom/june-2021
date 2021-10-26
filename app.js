@@ -9,16 +9,15 @@ mongoose.connect(MONGO_CONNECT);
 
 
 
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-const userRouter = require('./routes/user.router')
-const {MONGO} = require("./configs/config");
-app.use('/users', userRouter)
+const userRouter = require('./routes/user.router');
+app.use('/users', userRouter);
 
 app.listen(PORT, ()=> {
   console.log(`App listen ${PORT}`)
-})
+});
 
 
 
