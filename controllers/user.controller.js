@@ -12,7 +12,7 @@ module.exports = {
     console.log('router GET users Id')
   },
   createUsers: (req, res)=> {
-    res.json('create user')
+    console.log(req.body)
     console.log('router POST user')
   },
   deleteUsers: (req, res)=> {
