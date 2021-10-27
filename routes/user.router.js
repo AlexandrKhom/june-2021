@@ -1,19 +1,11 @@
+const {getUsers, createUsers, deleteUsers} = require("../controllers/user.controller");
 const router = require('express').Router()
 
-router.get('/', (req, res)=> {
-  res.json('All users')
-  console.log('router GET ALL users')
-})
+router.get('/', getUsers)
 
-router.post('/', (req, res)=> {
-  res.json('create user')
-  console.log('router POST user')
-})
+router.post('/', createUsers)
 
-router.delete('/', (req, res)=> {
-  res.json('delete user')
-  console.log('router DELETE user')
-})
+router.delete('/', deleteUsers)
 
 
 
