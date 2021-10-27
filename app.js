@@ -1,23 +1,14 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const {MONGO_CONNECT, PORT} = require('./configs/config')
+const express = require('express')
+
+
 
 const app = express();
 
-mongoose.connect(MONGO_CONNECT);
+const userRouter = require('./routes/user.router')
 
+app.use('/users', userRouter)
 
-
-
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-
-const userRouter = require('./routes/user.router');
-app.use('/users', userRouter);
-
-app.listen(PORT, ()=> {
-  console.log(`App listen ${PORT}`)
-});
-
-
+app.listen(5000, ()=> {
+  console.log('server 5000 start')
+})
 

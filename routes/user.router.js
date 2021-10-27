@@ -1,14 +1,26 @@
-const router = require('express').Router();
-const userController = require('../controllers/user.controller')
-const userMIddleware = require('../middlewares/user.middleware')
+const router = require('express').Router()
 
-router.get('/', userController.getUser);
+router.get('/', (req, res)=> {
+  res.json('All users')
+  console.log('router GET ALL users')
+})
 
-router.get('/:user_id', userController.getUserById);
+router.post('/', (req, res)=> {
+  res.json('create user')
+  console.log('router POST user')
+})
 
-router.post('/', userMIddleware.createUserMiddleware, userController.createUser);
+router.delete('/', (req, res)=> {
+  res.json('delete user')
+  console.log('router DELETE user')
+})
 
-router.put('/', userController.updateUser);
 
-module.exports = router;
+
+module.exports = router
+
+
+
+
+
 
