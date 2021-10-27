@@ -1,7 +1,15 @@
+const db = require('../dataBase/users')
+
 module.exports = {
   getUsers: (req, res)=> {
-    res.json('All users')
+    res.json(db)
     console.log('router GET ALL users')
+  },
+  getUserById: (req, res)=> {
+    const {user_id} = req.params
+    const user = db[user_id-1]
+    res.json(user)
+    console.log('router GET users Id')
   },
   createUsers: (req, res)=> {
     res.json('create user')
