@@ -1,44 +1,32 @@
-const User = require('../dataBase/User')
-
+const db = require('../dataBase/users')
 
 module.exports = {
-  getUser: async (req, res) => {
-   try {
-     const users = await User.find()
-     res.json(users)
-   }
-   catch (e) {
-     console.log(e)
-   }
+  getUsers: (req, res) => {
+    res.json(db)
+    console.log('router GET ALL users')
+  },
+  getUserById: (req, res) => {
+    const {user_id} = req.params
+    const user = db[user_id - 1]
+    res.json(user)
+    console.log('router GET users Id')
+  },
+  createUsers: (req, res) => {
+    console.log(req.body)
+    db.push({...req.body, id: db.length + 1})
+    res.json(db)
+    console.log('router POST user')
+  },
+  deleteUsers: (req, res) => {
+    res.json('delete user')
+    console.log('router DELETE user')
   },
 
-  getUserById: async (req, res) => {
-    try {
-      const {user_id} = req.params
-      console.log(user_id)
-      const user = await User.findById(user_id)
-      res.json({user})
-    }
-    catch (e) {
-      console.log(e)
-    }
-  },
+}
 
-  createUser: async (req, res) => {
-try {
-  console.log(req.body)
-  const user = await User.create(req.body)
-  res.json(user)
-}
-catch (e) {
-  console.log(e)
-}
-  },
 
-  updateUser: (req, res) => {
-    res.json('Update User')
-  }
-}
+
+
 
 
 
