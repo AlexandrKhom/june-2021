@@ -1,17 +1,24 @@
 const express = require('express')
 
+const app = express()
 
+app.get(`/users`, (req, res)=> {
+res.json('Get Users')
+})
+app.post(`/users`, (req, res)=> {
+  res.json('Post Users')
+})
+app.delete(`/users`, (req, res)=> {
+  res.json('Delete Users')
+})
 
-const app = express();
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-
-const userRouter = require('./routes/user.router')
-
-
-app.use('/users', userRouter)
 
 app.listen(5000, ()=> {
-  console.log('server 5000 start')
+  console.log(`app listen 5000`)
 })
+
+
+
+
+
 
