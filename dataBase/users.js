@@ -3,4 +3,5 @@ module.exports = [
   {id: 2, name: 'Anna'},
   {id: 3, name: 'Ander'},
   {id: 4, name: 'Ira'},
+  {id: 5, name: 'max'},
 ]
