@@ -20,7 +20,8 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/june2021')
+const { MONGO_CONNECT_URL, PORT } = require("./configs/config");
+mongoose.connect(MONGO_CONNECT_URL)
 
 const app = express()
 app.use(express.json())
@@ -30,7 +31,7 @@ const userRouter = require('./routes/user.router')
 app.use('/users', userRouter)
 
 
-app.listen(5000, ()=> {
-  console.log('port 5000 ready')
+app.listen(PORT, ()=> {
+  console.log(`port 5000 ready ${PORT}`)
 })
 
