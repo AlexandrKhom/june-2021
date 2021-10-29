@@ -28,6 +28,8 @@
 //импортируем модель схемы из базы
 const User = require('../dataBase/User')
 
+const passwordService = require('../service/password.service')
+
 //все запросы должны быть асинхронными и в try/catch
 module.exports = {
   getUsers: async (req, res)=> {
@@ -50,7 +52,14 @@ module.exports = {
   },
   createUser: async (req, res) => {
    try {
-     const newUser = await User.create(req.body)
+
+     const hashedPassword = await passwordService.hash(req.body.password)
+
+     console.log('*********')
+     console.log(hashedPassword)
+     console.log('*********')
+
+     const newUser = await User.create({...req.body, password: hashedPassword})
      res.json(newUser)
    } catch (e) {
      res.json(e)
