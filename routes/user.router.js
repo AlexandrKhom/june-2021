@@ -1,14 +1,10 @@
 const router = require('express').Router()
+const userController = require('../controllers/user.controller')
 
-router.post(`/`, (req, res)=> {
-  res.json('Post Users')
-})
-router.get(`/`, (req, res)=> {
-  res.json('Get Users')
-})
-router.delete(`/`, (req, res)=> {
-  res.json('Delete Users')
-})
+router.post(`/`, userController.postUsers)
+router.get(`/`, userController.getUsers)
+router.get(`/:user_id`, userController.getUserById)
+router.delete(`/`, userController.deleteUsers)
 
 module.exports = router
 
