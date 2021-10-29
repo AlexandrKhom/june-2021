@@ -22,3 +22,6 @@ router.get('/', userController.getUsers)
 router.get('/:user_id', userController.getUsersById)
 
 module.exports = router
+
+
+

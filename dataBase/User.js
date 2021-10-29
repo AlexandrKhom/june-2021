@@ -27,3 +27,8 @@ const userSchema = new Schema({
 }, {timestamps: true})
 //экспортируем модель (название в коллекции, наша схема)
 module.exports = model('user', userSchema)
+
+
+
+
+
