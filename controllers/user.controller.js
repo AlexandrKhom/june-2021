@@ -23,20 +23,35 @@
 //   },
 // }
 
-const db = require('../dataBase/users')
+// const db = require('../dataBase/users')
+const User = require('../dataBase/User')
+
 
 module.exports = {
-  getUsers: (req, res)=> {
-    res.json(db)
+  getUsers: async (req, res)=> {
+    try {
+      const users = await User.find()
+      res.json(users)
+    } catch (e) {
+      res.json(e)
+    }
   },
-  getUsersById: (req, res)=> {
-    const {user_id} = req.params
-    const user = db[user_id - 1]
-    res.json(user)
+  getUsersById: async (req, res)=> {
+    try {
+      const {user_id} = req.params
+      const user = await User.findById(user_id)
+      res.json(user)
+    } catch (e) {
+      res.json(e)
+    }
   },
-  createUser: (req, res) => {
-    db.push({...req.body, id: db.length + 1})
-    res.json(db)
+  createUser: async (req, res) => {
+   try {
+     const newUser = await User.create(req.body)
+     res.json(newUser)
+   } catch (e) {
+     res.json(e)
+   }
   }
 }
 
