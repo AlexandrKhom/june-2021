@@ -24,12 +24,15 @@
 // }
 
 // const db = require('../dataBase/users')
+
+//импортируем модель схемы из базы
 const User = require('../dataBase/User')
 
-
+//все запросы должны быть асинхронными и в try/catch
 module.exports = {
   getUsers: async (req, res)=> {
     try {
+      //у модели появляются методы MongoDB
       const users = await User.find()
       res.json(users)
     } catch (e) {

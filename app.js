@@ -19,9 +19,11 @@
 // })
 
 const express = require('express')
+
+// подключаем мангуст
 const mongoose = require('mongoose')
-const { MONGO_CONNECT_URL, PORT } = require("./configs/config");
-mongoose.connect(MONGO_CONNECT_URL)
+//указываем место создания базы
+mongoose.connect('mongodb://localhost:27017/june2021')
 
 const app = express()
 app.use(express.json())
@@ -31,7 +33,7 @@ const userRouter = require('./routes/user.router')
 app.use('/users', userRouter)
 
 
-app.listen(PORT, ()=> {
-  console.log(`port 5000 ready ${PORT}`)
+app.listen(5000, ()=> {
+  console.log(`port 5000 ready`)
 })
 
