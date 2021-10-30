@@ -18,11 +18,30 @@
 //   console.log(`app listen 5000`)
 // })
 
-const express = require('express')
 
-// подключаем мангуст
+//
+// const express = require('express')
+//
+// // подключаем мангуст
+// const mongoose = require('mongoose')
+// //указываем место создания базы
+// mongoose.connect('mongodb://localhost:27017/june2021')
+//
+// const app = express()
+// app.use(express.json())
+// app.use(express.urlencoded({extended: true}))
+//
+// const userRouter = require('./routes/user.router')
+// app.use('/users', userRouter)
+//
+//
+// app.listen(5000, ()=> {
+//   console.log(`port 5000 ready`)
+// })
+
+const express = require('express')
 const mongoose = require('mongoose')
-//указываем место создания базы
+
 mongoose.connect('mongodb://localhost:27017/june2021')
 
 const app = express()
@@ -33,10 +52,9 @@ const userRouter = require('./routes/user.router')
 app.use('/users', userRouter)
 
 
+
+
 app.listen(5000, ()=> {
-  console.log(`port 5000 ready`)
+  console.log('port 5000 go')
 })
-
-
-
 

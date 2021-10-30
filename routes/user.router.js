@@ -13,16 +13,25 @@
 // //экспортируем
 // module.exports = router
 
+
+// const router = require('express').Router()
+// const userController = require('../controllers/user.controller')
+// const userMiddleware = require('../middlewares/user.middleware')
+// //все мидлвары добавляем ДО контроллера
+// router.post('/', userMiddleware.isUserValid, userMiddleware.createUserMiddleware, userController.createUser)
+// router.get('/', userController.getUsers)
+// router.get('/:user_id', userController.getUsersById)
+// router.delete('/:user_id', userController.deleteUser)
+//
+// module.exports = router
+
+
 const router = require('express').Router()
 const userController = require('../controllers/user.controller')
-const userMiddleware = require('../middlewares/user.middleware')
-//все мидлвары добавляем ДО контроллера
-router.post('/', userMiddleware.isUserValid, userMiddleware.createUserMiddleware, userController.createUser)
-router.get('/', userController.getUsers)
-router.get('/:user_id', userController.getUsersById)
-router.delete('/:user_id', userController.deleteUser)
+
+router.get('/', userController.getUsers);
+router.get('/:user_id', userController.getUsersById);
+router.post('/', userController.postUsers);
+router.delete('/:user_id', userController.deleteUsersById)
 
 module.exports = router
-
-
-
