@@ -29,6 +29,7 @@
 const User = require('../dataBase/User')
 
 const passwordService = require('../service/password.service')
+const userUtil = require('../util/user.util')
 
 //все запросы должны быть асинхронными и в try/catch
 module.exports = {
@@ -44,7 +45,8 @@ module.exports = {
   getUsersById: async (req, res)=> {
     try {
       const {user_id} = req.params
-      const user = await User.findById(user_id)
+      let user = await User.findById(user_id).lean()
+      user = userUtil.userNormalizator(user)
       res.json(user)
     } catch (e) {
       res.json(e)
