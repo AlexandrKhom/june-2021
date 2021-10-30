@@ -17,8 +17,11 @@ const router = require('express').Router()
 const userController = require('../controllers/user.controller')
 const userMiddleware = require('../middlewares/user.middleware')
 //все мидлвары добавляем ДО контроллера
-router.post('/',userMiddleware.createUserMiddleware, userController.createUser)
+router.post('/', userMiddleware.isUserValid, userMiddleware.createUserMiddleware, userController.createUser)
 router.get('/', userController.getUsers)
 router.get('/:user_id', userController.getUsersById)
 
 module.exports = router
+
+
+

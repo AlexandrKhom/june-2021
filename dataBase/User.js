@@ -15,6 +15,11 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
+  password: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   role: {
     type: String,
     default: userRoles.USER,
@@ -27,3 +32,8 @@ const userSchema = new Schema({
 }, {timestamps: true})
 //экспортируем модель (название в коллекции, наша схема)
 module.exports = model('user', userSchema)
+
+
+
+
+
