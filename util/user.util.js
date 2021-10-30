@@ -1,3 +1,4 @@
+//ф-ция для скрытия полей объекта
 module.exports = {
   userNormalizator: (userNormalize = {}) => {
     const fieldsToRemove = [

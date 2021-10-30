@@ -42,6 +42,8 @@ module.exports = {
       res.json(e)
     }
   },
+
+  //при получении юзера скрываем пароль
   getUsersById: async (req, res)=> {
     try {
       const {user_id} = req.params
@@ -52,20 +54,25 @@ module.exports = {
       res.json(e)
     }
   },
+
+  //при создании юзера хешируем пароль
   createUser: async (req, res) => {
    try {
-
      const hashedPassword = await passwordService.hash(req.body.password)
-
-     // console.log('*********')
-     // console.log(hashedPassword)
-     // console.log('*********')
-
      const newUser = await User.create({...req.body, password: hashedPassword})
      res.json(newUser)
    } catch (e) {
      res.json(e)
    }
+  },
+  deleteUser: async (req, res) => {
+    try {
+      const {user_id} = req.params
+      const user = await User.findOneAndDelete(user_id)
+      res.json(user)
+    }catch (e) {
+      console.log(e)
+    }
   }
 }
 
