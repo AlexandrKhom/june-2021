@@ -6,7 +6,7 @@ module.exports = {
       const users = await User.find()
       res.json(users)
     } catch (e) {
-      console.log(e)
+      res.json(e)
     }
   },
   getUser: async (req, res) => {
@@ -15,7 +15,7 @@ module.exports = {
       const user = await User.findById(user_id)
       res.json(user)
     } catch (e) {
-      console.log(e)
+      res.json(e)
     }
   },
   postUser: async (req, res) => {
@@ -23,7 +23,7 @@ module.exports = {
       const user = await User.create(req.body)
       res.json(user)
     } catch (e) {
-      console.log(e)
+      res.json(e)
     }
   },
   deleteUser: async (req, res) => {
@@ -32,15 +32,9 @@ module.exports = {
       const user = await User.findOneAndDelete(user_id)
       res.json(user)
     } catch (e) {
-      console.log(e)
+      res.json(e)
     }
   }
 }
-
-
-
-
-
-
 
 

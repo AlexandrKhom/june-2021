@@ -13,7 +13,11 @@ const userSchema = new Schema({
   role: {
     type: String,
     default: 'user',
-    enum: ['user', 'admin']
+    enum: ['user', 'admin', 'manager']
   }
 }, {timestamps: true})
-module.exports = model('users', userSchema)
+
+module.exports = model('user', userSchema)
+
+
+
